@@ -1,8 +1,8 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .rating {
   width: 100%;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -19,12 +19,24 @@
   .container {
     background: #ffffff;
     border-radius: 8px;
-    padding-top: 24px;
     height: 548px;
     overflow: scroll;
 
-    p {
-      margin-left: 51px;
+    .title {
+      text-align: center;
+      background: #6495ed;
+      border-radius: 8px 8px 0px 0px;
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      height: 69px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: #ffffff;
     }
   }
   ul {
@@ -43,7 +55,7 @@
   }
 
   .num {
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -56,7 +68,7 @@
   }
 
   .name {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -66,7 +78,7 @@
 
   .points,
   .time {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: normal;
     font-size: 12px;

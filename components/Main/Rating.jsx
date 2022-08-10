@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import axios from 'axios';
-import Users from './Users';
+import axios from "axios";
+import Users from "./Users";
 
-import styles from './Rating.module.scss';
+import styles from "./Rating.module.scss";
 
-import protocol from '../../protocol';
+import protocol from "../../protocol";
 
-export default function Rating({ host = '' }) {
+export default function Rating({ host = "" }) {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        console.info('try to get rating');
+        console.info("try to get rating");
 
         const { data } = await axios.get(`${protocol}${host}/api/rating`);
         const fetchUsers = data.map((item) =>
-          item.volonteers.map((user) => user),
+          item.volonteers.map((user) => user)
         );
         setUsers(fetchUsers);
         console.log(fetchUsers);
@@ -29,7 +29,9 @@ export default function Rating({ host = '' }) {
   return (
     <div className={styles.rating}>
       <div className={styles.container}>
-        <p>Рейтинг компаний</p>
+        <p className={styles.title}>
+          Рейтинг компаний, принимающих студентов на производственную практику
+        </p>
         <ul>
           {users.length > 0 ? <Users users={users} /> : <p>Компаний нет</p>}
         </ul>
