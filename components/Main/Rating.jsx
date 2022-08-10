@@ -1,31 +1,72 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
-import Users from "./Users";
+import Companies from "./Companies";
 
 import styles from "./Rating.module.scss";
 
 import protocol from "../../protocol";
 
 export default function Rating({ host = "" }) {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    const fetchNewsData = async () => {
-      try {
-        console.info("try to get rating");
+  const [companies, setCompanies] = useState([
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+    {
+      imagePath: "",
+      name: "Татнефть",
+    },
+  ]);
 
-        const { data } = await axios.get(`${protocol}${host}/api/rating`);
-        const fetchUsers = data.map((item) =>
-          item.volonteers.map((user) => user)
-        );
-        setUsers(fetchUsers);
-        console.log(fetchUsers);
-      } catch (err) {
-        console.info(`error with getting news: ${err}`);
-      }
-    };
-    fetchNewsData();
-  }, []);
   return (
     <div className={styles.rating}>
       <div className={styles.container}>
@@ -33,7 +74,11 @@ export default function Rating({ host = "" }) {
           Рейтинг компаний, принимающих студентов на производственную практику
         </p>
         <ul>
-          {users.length > 0 ? <Users users={users} /> : <p>Компаний нет</p>}
+          {companies.length > 0 ? (
+            <Companies companies={companies} />
+          ) : (
+            <p>Компаний нет</p>
+          )}
         </ul>
       </div>
     </div>
