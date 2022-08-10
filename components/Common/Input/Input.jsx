@@ -1,28 +1,62 @@
-import React from 'react';
-import styles from './Input.module.scss';
+import React from "react";
+
+import { DatePicker } from "antd";
+
+import styles from "./Input.module.scss";
 
 export default function Input({
-  placeholder = '',
-  endlessType = '',
+  placeholder = "",
+  endlessType = "",
   onChange = () => {},
   onClick = () => {},
   value = null,
   name = null,
   required = false,
-  type = 'text',
+  type = "text",
 }) {
   return (
     <div className={styles.input}>
       <p>{name}</p>
       {required ? <span>*</span> : <></>}
-      <input
-        required
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-      />
-      {endlessType === 'password' ? (
+      {endlessType === "phoneNumber" ? (
+        <div className={styles.phoneNum}>
+          <div className={styles.regCode}>+7</div>
+          <input
+            required
+            type={type}
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+          />
+        </div>
+      ) : (
+        <>
+          {type === "date" ? (
+            <DatePicker
+              style={{
+                display: "block",
+                outline: "none",
+                width: "100%",
+                background: "#ffffff",
+                border: "1px solid #d9d9d9",
+                boxSizing: "border-box",
+                borderRadius: "6px",
+                padding: "12px 10px",
+              }}
+              onChange={onChange}
+            />
+          ) : (
+            <input
+              required
+              type={type}
+              placeholder={placeholder}
+              onChange={onChange}
+              value={value}
+            />
+          )}
+        </>
+      )}
+      {endlessType === "password" ? (
         <button onClick={onClick} type="button">
           <svg
             width="20"
