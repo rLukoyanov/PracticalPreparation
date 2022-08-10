@@ -1,12 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
-import * as pino from 'pino';
+import React, { useState, useContext, useEffect } from "react";
+import * as pino from "pino";
 
-import { Checkbox } from 'antd';
-import Input from '../../components/Common/Input/Input';
-import Button from '../../components/Common/Button/Button';
-import AuthContext from '../../store/auth-context';
+import { Checkbox } from "antd";
+import Input from "../../components/Common/Input/Input";
+import Button from "../../components/Common/Button/Button";
+import AuthContext from "../../store/auth-context";
 
-import styles from '../../components/Login/Login.module.scss';
+import styles from "../../components/Login/Login.module.scss";
 
 export default function LoginPage() {
   const logger = pino({
@@ -14,14 +14,20 @@ export default function LoginPage() {
   });
 
   const [reg, setReg] = useState(false);
-  const [inputType, setInputType] = useState('password');
-  const [enteredLogin, setEnteredLogin] = useState('');
-  const [enteredPassword, setEnteredPassword] = useState('');
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredSurname, setEnteredSurname] = useState('');
-  const [enteredBirthday, setEnteredBirthday] = useState('');
-  const [loading, setLoading] = useState('');
+
+  const [enteredLogin, setEnteredLogin] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredSurname, setEnteredSurname] = useState("");
+  const [enteredBirthday, setEnteredBirthday] = useState("");
+  const [enteredNumber, setEnteredNumber] = useState("");
+  const [entererdEmail, setEnteredEmail] = useState("");
+  const [enteredEducation, setEnteredEducation] = useState("");
+
+  const [loading, setLoading] = useState("");
   const [error, setError] = useState(null);
+
+  const [inputType, setInputType] = useState("password");
 
   const authCtx = useContext(AuthContext);
 
@@ -49,22 +55,35 @@ export default function LoginPage() {
     setEnteredSurname(event.target.value);
   };
 
-  const enteredBirthdayHandler = (event) => {
-    setEnteredBirthday(event.target.value);
+  const enteredBirthdayHandler = (date, dateString) => {
+    console.log(date, dateString);
+    setEnteredBirthday(dateString);
+  };
+
+  const enteredNumberHandler = (event) => {
+    setEnteredNumber(event.target.value);
+  };
+
+  const enteredEmailHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+
+  const enteredEduHandler = (event) => {
+    setEnteredEducation(event.target.value);
   };
 
   const onShowPassword = () => {
-    setInputType(inputType === 'text' ? 'password' : 'text');
+    setInputType(inputType === "text" ? "password" : "text");
   };
 
   const onFinish = async () => {
     if (enteredLogin && enteredPassword) {
       setLoading(true);
-      logger.info('start getting user data');
+      logger.info("start getting user data");
       // get user data
       authCtx.onLogin(enteredLogin, enteredPassword);
     } else {
-      setError('Заполните поля');
+      setError("Заполните поля");
     }
   };
 
@@ -95,34 +114,36 @@ export default function LoginPage() {
           <Input
             required
             name="Дата рождения"
-            type="text"
+            type="date"
             placeholder="06.12.2000"
             onChange={enteredBirthdayHandler}
             value={enteredBirthday}
           />
+
           <Input
             required
             name="Номер телефона"
-            type="text"
+            type="number"
             placeholder="965-748-89-90"
-            onChange={enteredBirthdayHandler}
-            value={enteredBirthday}
+            onChange={enteredNumberHandler}
+            value={enteredNumber}
+            endlessType="phoneNumber"
+          />
+          <Input
+            required
+            name="Учебное заведение"
+            type="text"
+            placeholder="Введите название вашего учебного заведения"
+            onChange={enteredEduHandler}
+            value={enteredEducation}
           />
           <Input
             required
             name="Адрес электронной почты"
-            type="text"
+            type="email"
             placeholder="Введите ваш e-mail"
-            onChange={enteredBirthdayHandler}
-            value={enteredBirthday}
-          />
-          <Input
-            required
-            name="Номер телефона"
-            type="text"
-            placeholder="965-748-89-90"
-            onChange={enteredBirthdayHandler}
-            value={enteredBirthday}
+            onChange={enteredEmailHandler}
+            value={entererdEmail}
           />
           <Input
             required
