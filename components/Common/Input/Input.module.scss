@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+.input {
+  margin-top: 30px;
+  position: relative;
+  width: 100%;
+  input {
+    display: block;
+    outline: none;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 12px 10px;
+
+    *::placeholder {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #444150;
+      opacity: 0.5;
+    }
+  }
+
+  span {
+    color: $login-link-color;
+  }
+
+  .svgColor {
+    fill: $svg-color;
+  }
+
+  p {
+    display: inline-block;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #444150;
+    margin-bottom: 8px;
+  }
+
+  button {
+    position: absolute;
+    right: 18px;
+    top: 47px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+  }
+}
