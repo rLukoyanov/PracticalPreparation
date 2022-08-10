@@ -1,0 +1,43 @@
+{
+  "name": "nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@svgr/webpack": "^5.5.0",
+    "antd": "^4.16.11",
+    "axios": "^0.21.1",
+    "date-fns": "^2.25.0",
+    "dotenv": "^10.0.0",
+    "emailjs-com": "^3.2.0",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.21",
+    "next": "10.x",
+    "node-fetch": "^2.6.1",
+    "pino": "^6.13.0",
+    "pino-pretty": "^7.0.0",
+    "prop-types": "^15.7.2",
+    "querystring": "^0.2.1",
+    "react": "17.x",
+    "react-animated-burgers": "^1.2.8",
+    "react-dom": "17.x",
+    "react-slick": "^0.28.1",
+    "react-yandex-metrika": "^2.6.0",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "sass": "^1.49.0"
+  }
+}

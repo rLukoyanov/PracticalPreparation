@@ -1,0 +1,88 @@
+@import '../../styles/variables';
+
+.rating {
+  width: 100%;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 37px;
+  color: #000000;
+
+  .ad {
+    display: block;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+  }
+  .container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding-top: 24px;
+    height: 548px;
+    overflow: scroll;
+
+    p {
+      margin-left: 51px;
+    }
+  }
+  ul {
+    max-width: 978px;
+    li {
+      display: flex;
+      align-items: center;
+
+      .userData {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+
+  .num {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 23px;
+    display: flex;
+    align-items: center;
+
+    color: $text-color;
+  }
+
+  .name {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    width: 247px;
+  }
+
+  .points,
+  .time {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+
+  .image {
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+  }
+}

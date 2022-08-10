@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+
+.navigation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fdfafa;
+  width: 237px;
+  height: 100%;
+
+  button {
+    width: 160px;
+    padding: 15px 34px 15px 16px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    height: 50px;
+
+    span {
+      margin-left: 15px;
+    }
+
+    &:hover {
+      border: 1px solid $nav-text-color;
+    }
+
+    &:active {
+      background-color: $nav-bg-color;
+    }
+  }
+
+  .active {
+    background-color: $nav-bg-color;
+  }
+}
+
+.burger {
+  display: none !important;
+  position: absolute;
+  left: 10px;
+  top: 32px;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 1280px) {
+  .navigation {
+    display: none;
+    transition: 0.4s;
+  }
+
+  .activeNav {
+    display: flex;
+    background: rgba(253, 253, 253, 0.445);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 120px;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    transition: 0.4s;
+    z-index: 10000000;
+  }
+
+  .burger {
+    display: block !important;
+  }
+}
