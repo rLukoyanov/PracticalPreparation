@@ -73,13 +73,11 @@ export default function Rating({ host = "" }) {
         <p className={styles.title}>
           Рейтинг компаний, принимающих студентов на производственную практику
         </p>
-        <ul>
-          {companies.length > 0 ? (
-            <Companies companies={companies} />
-          ) : (
-            <p>Компаний нет</p>
-          )}
-        </ul>
+        {companies.length > 0 ? (
+          <Companies companies={companies} />
+        ) : (
+          <p>Компаний нет</p>
+        )}
       </div>
     </div>
   );

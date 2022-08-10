@@ -9,6 +9,7 @@
   line-height: 22px;
   padding: 37px;
   color: #000000;
+  overflow-x: hidden;
 
   .ad {
     display: block;
@@ -21,6 +22,7 @@
     border-radius: 8px;
     height: 548px;
     overflow: scroll;
+    overflow-x: hidden;
 
     .title {
       text-align: center;
@@ -64,7 +66,7 @@
     display: flex;
     align-items: center;
 
-    color: $text-color;
+    color: $rating-numbers;
   }
 
   .name {
