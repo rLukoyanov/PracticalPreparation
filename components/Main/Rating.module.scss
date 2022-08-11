@@ -1,102 +1,103 @@
 @import "../../styles/variables";
 
 .rating {
-  width: 100%;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  padding: 37px;
-  color: #000000;
-  overflow-x: hidden;
-
-  .ad {
-    display: block;
-    width: 400px;
-    height: 400px;
-    margin: 20px auto;
-  }
-  .container {
-    background: #ffffff;
-    border-radius: 8px;
-    height: 548px;
-    overflow: scroll;
-    overflow-x: hidden;
-
-    .title {
-      text-align: center;
-      background: #6495ed;
-      border-radius: 8px 8px 0px 0px;
-      font-family: "Montserrat";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 22px;
-      height: 69px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: #ffffff;
-    }
-  }
-  ul {
-    max-width: 978px;
-    li {
-      display: flex;
-      align-items: center;
-
-      .userData {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-  }
-
-  .num {
+    width: 100%;
     font-family: "Montserrat";
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
-    padding: 23px;
-    display: flex;
-    align-items: center;
+    padding: 37px;
+    color: #000000;
+    overflow-x: hidden;
 
-    color: $rating-numbers;
-  }
-
-  .name {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    width: 247px;
-  }
-
-  .points,
-  .time {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    svg {
-      margin-right: 10px;
+    .title {
+        text-align: center;
+        background: #6495ed;
+        border-radius: 8px 8px 0px 0px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        height: 69px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        margin: 0;
     }
-  }
 
-  .image {
-    height: 40px;
-    width: 40px;
-    border-radius: 2px;
-  }
+    .ad {
+        display: block;
+        width: 400px;
+        height: 400px;
+        margin: 20px auto;
+    }
+
+    .container {
+        background: #ffffff;
+        border-radius: 0 0 8px 8px;
+        height: 548px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    ul {
+        max-width: 978px;
+        li {
+            display: flex;
+            align-items: center;
+
+            .userData {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+
+    .num {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        padding: 23px;
+        display: flex;
+        align-items: center;
+
+        color: $rating-numbers;
+    }
+
+    .name {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        width: 247px;
+    }
+
+    .points,
+    .time {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    .image {
+        height: 40px;
+        width: 40px;
+        border-radius: 2px;
+    }
 }
