@@ -1,39 +1,85 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import axios from 'axios';
-import Users from './Users';
+import axios from "axios";
+import Companies from "./Companies";
 
-import styles from './Rating.module.scss';
+import styles from "./Rating.module.scss";
 
-import protocol from '../../protocol';
+import protocol from "../../protocol";
 
-export default function Rating({ host = '' }) {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    const fetchNewsData = async () => {
-      try {
-        console.info('try to get rating');
+export default function Rating({ host = "" }) {
+    const [companies, setCompanies] = useState([
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+        {
+            imagePath: "",
+            name: "Татнефть",
+        },
+    ]);
 
-        const { data } = await axios.get(`${protocol}${host}/api/rating`);
-        const fetchUsers = data.map((item) =>
-          item.volonteers.map((user) => user),
-        );
-        setUsers(fetchUsers);
-        console.log(fetchUsers);
-      } catch (err) {
-        console.info(`error with getting news: ${err}`);
-      }
-    };
-    fetchNewsData();
-  }, []);
-  return (
-    <div className={styles.rating}>
-      <div className={styles.container}>
-        <p>Рейтинг компаний</p>
-        <ul>
-          {users.length > 0 ? <Users users={users} /> : <p>Компаний нет</p>}
-        </ul>
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.rating}>
+            <p className={styles.title}>
+                Рейтинг компаний, принимающих студентов на производственную
+                практику
+            </p>
+            <div className={styles.container}>
+                {companies.length > 0 ? (
+                    <Companies companies={companies} />
+                ) : (
+                    <p>Компаний нет</p>
+                )}
+            </div>
+        </div>
+    );
 }
