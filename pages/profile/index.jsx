@@ -8,6 +8,7 @@ import AuthContext from "../../store/auth-context";
 import styles from "../../components/Profile/profile.module.scss";
 
 import protocol from "../../protocol";
+import AchievesBlock from "../../components/Profile/AchievesBlock";
 
 export default function ProfilePage({ host = "" }) {
     const authCtx = useContext(AuthContext);
@@ -85,6 +86,8 @@ export default function ProfilePage({ host = "" }) {
                     gender={userData.gender}
                 />
             </div>
+
+            <AchievesBlock />
         </div>
     );
 }
