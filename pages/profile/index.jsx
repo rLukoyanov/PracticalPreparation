@@ -9,6 +9,7 @@ import styles from "../../components/Profile/profile.module.scss";
 
 import protocol from "../../protocol";
 import AchievesBlock from "../../components/Profile/AchievesBlock";
+import WorkExperience from "../../components/Profile/WorkExperience";
 
 export default function ProfilePage({ host = "" }) {
     const authCtx = useContext(AuthContext);
@@ -88,6 +89,7 @@ export default function ProfilePage({ host = "" }) {
             </div>
 
             <AchievesBlock />
+            <WorkExperience />
         </div>
     );
 }
