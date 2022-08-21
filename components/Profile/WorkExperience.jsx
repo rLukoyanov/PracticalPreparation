@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import AddWorkExp from "./AddWorkExp";
 
 import styles from "./profile.module.scss";
 
 export default function WorkExperience() {
+    const [isOpen, setIsOpen] = useState(false);
+    const onClose = () => {
+        setIsOpen(false);
+    };
+    const onOpen = () => {
+        setIsOpen(true);
+    };
     return (
         <div className={styles.work}>
             <div className={styles.header}>
                 <h3>Опыт Работы</h3>
-                <button>
+                <button onClick={onOpen}>
                     <svg
                         width="31"
                         height="31"
@@ -53,6 +61,7 @@ export default function WorkExperience() {
                     ></pre>
                 </div>
             </div>
+            {isOpen ? <AddWorkExp onClose={onClose} /> : <></>}
         </div>
     );
 }
