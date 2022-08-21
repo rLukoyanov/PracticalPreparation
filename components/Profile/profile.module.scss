@@ -381,12 +381,40 @@
 
     .exp {
         padding: 51px;
-
-        pre {
+        .content {
+            display: flex;
+            flex-direction: column;
             background: #d0d9f2;
             border-radius: 8px;
             overflow-wrap: break-word;
             margin-bottom: 40px;
+            .header {
+                display: flex;
+                .blue {
+                    font-family: "Montserrat";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 25px;
+                    line-height: 30px;
+                    text-align: center;
+                    padding: 6px;
+                    color: #ffffff;
+                    background: #6495ed;
+                    border-radius: 8px;
+                }
+                .white {
+                    font-family: "Montserrat";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 25px;
+                    line-height: 30px;
+                    text-align: center;
+                    padding: 6px;
+                    color: #6495ed;
+                    background: #ffffff;
+                    border-radius: 8px;
+                }
+            }
         }
     }
 }

@@ -24,43 +24,35 @@ export default function WorkExperience() {
                 </button>
             </div>
             <div className={styles.exp}>
+                <div className={styles.content}>
+                    <div className={styles.header}>
+                        <h3 className={styles.blue}>React developer</h3>
+                        <h3 className={styles.white}>Volonteria (Казань)</h3>
+                    </div>
 
-                <pre>
-                    <h2></h2>
-                    Полная реализация сайта и сайта администраторов.
-                    - Адаптивная верстка.
-                    - Работа c WordPress
-                    - Работа c RestAPI
-                    - Реализация ssr на Next.js
-                    - Реализация проксирования
+                    <pre
+                        className={styles.text}
+                        dangerouslySetInnerHTML={{
+                            __html: `
+    Полная реализация сайта и сайта администраторов.
+    - Адаптивная верстка. 
+    - Работа c WordPress
+    - Работа c RestAPI
+    - Реализация ssr на Next.js
+    - Реализация проксирования
 
-                    Стек:
-                    - ReactJS
-                    - Next.js
-                    - Axios
-                    - date-fns
-                    - antd
-                    - sass
-                </pre>
-                <pre >
-                    Полная реализация сайта и сайта администраторов.
-                    - Адаптивная верстка.
-                    - Работа с WordPress
-                    - Работа с RestAPI
-                    - Реализация ssr на Next.js
-                    - Реализация проксирования
-
-                    Стек:
-                    - ReactJS
-                    - Next.js
-                    - Axios
-                    - date-fns
-                    - antd
-                    - sass
-                </pre>
+    Стек:
+    - ReactJS
+    - Next.js
+    - Axios
+    - date-fns
+    - antd
+    - sass
+                    `,
+                        }}
+                    ></pre>
+                </div>
             </div>
-                
-           
         </div>
     );
 }
