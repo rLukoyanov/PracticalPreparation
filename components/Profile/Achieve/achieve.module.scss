@@ -1,16 +1,22 @@
+@import "../../../styles/variables";
+
 .achieve {
-  width: 115px;
-  margin: 0 auto;
+    width: 115px;
+    margin: 0 auto;
+
+    .svgColor {
+        fill: $svg-color;
+    }
 }
 
 .name {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 18px;
-  text-align: center;
-  letter-spacing: -0.33px;
-  color: #000000;
-  margin: 0;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.33px;
+    color: #000000;
+    margin: 0;
 }
