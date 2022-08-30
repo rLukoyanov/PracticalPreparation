@@ -16,7 +16,7 @@ export default function Input({
     className = "",
 }) {
     return (
-        <div className={styles.input}>
+        <div className={`${styles.input} ${className}`}>
             <p>{name}</p>
             {required ? <span>*</span> : <></>}
             {endlessType === "phoneNumber" ? (
@@ -53,7 +53,6 @@ export default function Input({
                             placeholder={placeholder}
                             onChange={onChange}
                             value={value}
-                            className={className}
                         />
                     )}
                 </>

@@ -114,6 +114,7 @@ export default function LoginPage() {
                         placeholder="Введите свое имя"
                         onChange={enteredNameHandler}
                         value={enteredName}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -122,6 +123,7 @@ export default function LoginPage() {
                         placeholder="Введите свою фамилию"
                         onChange={enteredSurnameHandler}
                         value={enteredSurname}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -130,6 +132,7 @@ export default function LoginPage() {
                         placeholder="06.12.2000"
                         onChange={enteredBirthdayHandler}
                         value={enteredBirthday}
+                        className={styles.input}
                     />
 
                     <Input
@@ -140,6 +143,7 @@ export default function LoginPage() {
                         onChange={enteredNumberHandler}
                         value={enteredNumber}
                         endlessType="phoneNumber"
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -148,6 +152,7 @@ export default function LoginPage() {
                         placeholder="Введите название вашего учебного заведения"
                         onChange={enteredEduHandler}
                         value={enteredEducation}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -156,6 +161,7 @@ export default function LoginPage() {
                         placeholder="Введите ваш e-mail"
                         onChange={enteredEmailHandler}
                         value={enteredEmail}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -166,6 +172,7 @@ export default function LoginPage() {
                         value={enteredPassword}
                         onClick={onShowPassword}
                         endlessType="password"
+                        className={styles.input}
                     />
                     <p className={styles.error}>{error}</p>
                     <div className={styles.checkboxPassword}>
@@ -212,6 +219,7 @@ export default function LoginPage() {
                         placeholder="Введите ваш e-mail"
                         onChange={enteredLoginHandler}
                         value={enteredLogin}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -222,6 +230,7 @@ export default function LoginPage() {
                         value={enteredPassword}
                         onClick={onShowPassword}
                         endlessType="password"
+                        className={styles.input}
                     />
                     <p className={styles.error}>{error}</p>
                     <div className={styles.checkboxPassword}>
