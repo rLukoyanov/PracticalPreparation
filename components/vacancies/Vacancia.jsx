@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import Button from "../Common/Button/Button";
 
@@ -11,9 +12,15 @@ export default function Vacancia({
     price = "",
     image = "",
     isResponse = false,
+    id = 0,
 }) {
+    const router = useRouter();
+
+    const onCardClick = (url) => {
+        router.push(url);
+    };
     return (
-        <div className={styles.vacan}>
+        <div className={styles.vacan} onClick={() => onCardClick(`vacancies/${id}`)}>
             <div className={styles.header}>
                 <div>
                     {!(image.length === 0) ? (
@@ -86,11 +93,14 @@ export default function Vacancia({
                     </>
                 ) : (
                     <>
-                        <Button className={styles.button} type="button">
+                        <Button
+                            className={`${styles.button} ${styles.answ}`}
+                            type="button"
+                        >
                             Откликнуться
                         </Button>
                         <Button
-                            className={`${styles.button} ${styles.response}`}
+                            className={`${styles.button} ${styles.responded}`}
                             type="button"
                         >
                             Откликнулось: 0
