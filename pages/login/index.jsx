@@ -174,7 +174,7 @@ export default function LoginPage() {
                         endlessType="password"
                         className={styles.input}
                     />
-                    <p className={styles.error}>{error}</p>
+                    {reg ?? <p className={styles.error}>{error}</p>}
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
