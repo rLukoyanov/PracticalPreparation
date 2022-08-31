@@ -20,7 +20,10 @@ export default function Vacancia({
         router.push(url);
     };
     return (
-        <div className={styles.vacan} onClick={() => onCardClick(`vacancies/${id}`)}>
+        <div
+            className={styles.vacan}
+            onClick={() => onCardClick(`vacancies/${id}`)}
+        >
             <div className={styles.header}>
                 <div>
                     {!(image.length === 0) ? (
@@ -87,7 +90,11 @@ export default function Vacancia({
                         >
                             Статус: на рассмотрении
                         </Button>
-                        <Button className={`${styles.button}`} type="button">
+                        <Button
+                            onClick={() => {}}
+                            className={`${styles.button}`}
+                            type="button"
+                        >
                             Контакты
                         </Button>
                     </>

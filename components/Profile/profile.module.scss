@@ -421,14 +421,25 @@
 }
 
 .addWorkExp {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: fixed;
     width: 100%;
-    padding: 50px;
-    background: #ffffff;
-    box-shadow: 0px 8px 26px 1px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: rgba(182, 182, 182, 0.73);
+    backdrop-filter: blur(5px);
+
+    .card {
+        position: fixed;
+        width: 70%;
+        padding: 50px;
+        background: #ffffff;
+        box-shadow: 0px 8px 26px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     button {
         float: right;
@@ -447,6 +458,13 @@
         width: 100%;
         border: 2px solid #c4c4c4;
         border-radius: 8px;
+    }
+
+    .btn {
+        width: 108px;
+        height: 24px;
+        line-height: 0;
+        font-size: 14px;
     }
 }
 @media (max-width: 1280px) {
