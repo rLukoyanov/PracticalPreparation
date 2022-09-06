@@ -35,40 +35,41 @@ export default function ProfilePage({ host = "" }) {
 
     return (
         <div className={styles.profile}>
-            <div className={styles.leftBlock}>
-                <div className={styles.avatarBlock}>
-                    <img
-                        className={styles.avatar}
-                        src={
-                            avatar
-                                ? avatar
-                                : "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album"
-                        }
-                        alt="avatar"
+            <div className={styles.flex}>
+                <div className={styles.leftBlock}>
+                    <div className={styles.avatarBlock}>
+                        <img
+                            className={styles.avatar}
+                            src={
+                                avatar
+                                    ? avatar
+                                    : "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album"
+                            }
+                            alt="avatar"
+                        />
+                        <h3>
+                            <div>{`${userData.name} ${userData.surname}`}</div>
+                            <p>{`id: ${id}`}</p>
+                        </h3>
+                    </div>
+
+                    <ContactsBlock
+                        email={email}
+                        phone={userData.phone}
+                        telegram={userData.telegram}
+                        address={userData.address}
                     />
-                    <h3>
-                        <div>{`${userData.name} ${userData.surname}`}</div>
-                        <p>{`id: ${id}`}</p>
-                    </h3>
                 </div>
-
-                <ContactsBlock
-                    email={email}
-                    phone={userData.phone}
-                    telegram={userData.telegram}
-                    address={userData.address}
-                />
+                <div className={styles.rightBlock}>
+                    <ChangeDataBlock
+                        name={userData.name}
+                        surname={userData.surname}
+                        email={email}
+                        date={userData.date}
+                        gender={userData.gender}
+                    />
+                </div>
             </div>
-            <div className={styles.rightBlock}>
-                <ChangeDataBlock
-                    name={userData.name}
-                    surname={userData.surname}
-                    email={email}
-                    date={userData.date}
-                    gender={userData.gender}
-                />
-            </div>
-
             <AchievesBlock />
             <div className={styles.bottomBlock}>
                 <div className={styles.tabs}>

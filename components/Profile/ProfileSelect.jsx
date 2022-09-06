@@ -8,6 +8,7 @@ export default function ProfileSelect({
     className = "",
     values = [],
     onChange = () => {},
+    disabled = false,
 }) {
     return (
         <>
@@ -17,6 +18,7 @@ export default function ProfileSelect({
                 defaultValue={defaultValue}
                 className={className}
                 onChange={onChange}
+                disabled={disabled}
             >
                 {values.map((item) => (
                     <Option key={item} value={item}>

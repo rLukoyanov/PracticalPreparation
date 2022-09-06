@@ -94,18 +94,21 @@ export default function ChangeDataBlock({
                         defaultValue={day}
                         values={days}
                         onChange={onDayChange}
+                        disabled
                     />
                     <ProfileSelect
                         className={`${styles.customSelect} ${styles.birth}`}
                         defaultValue={months[month]}
                         values={months}
                         onChange={onMonthChange}
+                        disabled
                     />
                     <ProfileSelect
                         className={`${styles.customSelect} ${styles.birth}`}
                         defaultValue={year}
                         values={years}
                         onChange={onYearChange}
+                        disabled
                     />
                 </div>
             </label>
