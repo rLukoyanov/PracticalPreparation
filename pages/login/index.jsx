@@ -78,10 +78,12 @@ export default function LoginPage() {
 
     const onFinish = async () => {
         if (enteredLogin && enteredPassword) {
-            setLoading(true);
             logger.info("start getting user data");
-            // get user data
+            setLoading(true);
+
             authCtx.onLogin(enteredLogin, enteredPassword);
+            setError(authCtx.error);
+            console.log(authCtx.error);
         } else {
             setError("Заполните поля");
         }
@@ -114,6 +116,7 @@ export default function LoginPage() {
                         placeholder="Введите свое имя"
                         onChange={enteredNameHandler}
                         value={enteredName}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -122,6 +125,7 @@ export default function LoginPage() {
                         placeholder="Введите свою фамилию"
                         onChange={enteredSurnameHandler}
                         value={enteredSurname}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -130,6 +134,7 @@ export default function LoginPage() {
                         placeholder="06.12.2000"
                         onChange={enteredBirthdayHandler}
                         value={enteredBirthday}
+                        className={styles.input}
                     />
 
                     <Input
@@ -140,6 +145,7 @@ export default function LoginPage() {
                         onChange={enteredNumberHandler}
                         value={enteredNumber}
                         endlessType="phoneNumber"
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -148,6 +154,7 @@ export default function LoginPage() {
                         placeholder="Введите название вашего учебного заведения"
                         onChange={enteredEduHandler}
                         value={enteredEducation}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -156,6 +163,7 @@ export default function LoginPage() {
                         placeholder="Введите ваш e-mail"
                         onChange={enteredEmailHandler}
                         value={enteredEmail}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -166,8 +174,9 @@ export default function LoginPage() {
                         value={enteredPassword}
                         onClick={onShowPassword}
                         endlessType="password"
+                        className={styles.input}
                     />
-                    <p className={styles.error}>{error}</p>
+                    {reg ?? <p className={styles.error}>{error}</p>}
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
@@ -207,11 +216,12 @@ export default function LoginPage() {
                     </div>
                     <Input
                         required
-                        name="Логин"
+                        name="Почта"
                         type="text"
                         placeholder="Введите ваш e-mail"
                         onChange={enteredLoginHandler}
                         value={enteredLogin}
+                        className={styles.input}
                     />
                     <Input
                         required
@@ -222,6 +232,7 @@ export default function LoginPage() {
                         value={enteredPassword}
                         onClick={onShowPassword}
                         endlessType="password"
+                        className={styles.input}
                     />
                     <p className={styles.error}>{error}</p>
                     <div className={styles.checkboxPassword}>
