@@ -90,13 +90,6 @@ export default function Vacancia({
                         >
                             Статус: на рассмотрении
                         </Button>
-                        <Button
-                            onClick={() => {}}
-                            className={`${styles.button}`}
-                            type="button"
-                        >
-                            Контакты
-                        </Button>
                     </>
                 ) : (
                     <>
