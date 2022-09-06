@@ -78,10 +78,12 @@ export default function LoginPage() {
 
     const onFinish = async () => {
         if (enteredLogin && enteredPassword) {
-            setLoading(true);
             logger.info("start getting user data");
-            // get user data
+            setLoading(true);
+
             authCtx.onLogin(enteredLogin, enteredPassword);
+            setError(authCtx.error);
+            console.log(authCtx.error);
         } else {
             setError("Заполните поля");
         }

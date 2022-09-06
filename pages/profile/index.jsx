@@ -7,13 +7,11 @@ import AchievesBlock from "../../components/Profile/AchievesBlock";
 import WorkExperience from "../../components/Profile/WorkExperience";
 import AddWorkExp from "../../components/Profile/AddWorkExp";
 import AuthContext from "../../store/auth-context";
+import UserAchieves from "../../components/Profile/UserAchieves";
 
 import styles from "../../components/Profile/profile.module.scss";
 
-import protocol from "../../protocol";
-import UserAchieves from "../../components/Profile/UserAchieves";
-
-export default function ProfilePage({ host = "" }) {
+export default function ProfilePage() {
     const authCtx = useContext(AuthContext);
     const [userData, setUserData] = useState({
         name: "userName",
@@ -21,8 +19,7 @@ export default function ProfilePage({ host = "" }) {
         surname: "userSurname",
     });
 
-    const [isLoading, setIsLoading] = useState(true);
-    const { id = "0", email, avatar } = authCtx.userData;
+    const { userId, firstName, lastName, avatar, email } = authCtx.userData;
 
     const [isOpen, setIsOpen] = useState(false);
     const [tabs, setTabs] = useState("exp");
@@ -40,16 +37,12 @@ export default function ProfilePage({ host = "" }) {
                     <div className={styles.avatarBlock}>
                         <img
                             className={styles.avatar}
-                            src={
-                                avatar
-                                    ? avatar
-                                    : "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album"
-                            }
+                            src={avatar}
                             alt="avatar"
                         />
                         <h3>
-                            <div>{`${userData.name} ${userData.surname}`}</div>
-                            <p>{`id: ${id}`}</p>
+                            <div>{`${firstName} ${lastName}`}</div>
+                            <p>{`id: ${userId}`}</p>
                         </h3>
                     </div>
 
@@ -123,11 +116,3 @@ export default function ProfilePage({ host = "" }) {
         </div>
     );
 }
-
-export const getServerSideProps = async (context) => {
-    const { req } = context;
-
-    return {
-        props: { host: req.headers.host },
-    };
-};
