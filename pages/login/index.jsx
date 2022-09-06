@@ -78,10 +78,12 @@ export default function LoginPage() {
 
     const onFinish = async () => {
         if (enteredLogin && enteredPassword) {
-            setLoading(true);
             logger.info("start getting user data");
-            // get user data
+            setLoading(true);
+
             authCtx.onLogin(enteredLogin, enteredPassword);
+            setError(authCtx.error);
+            console.log(authCtx.error);
         } else {
             setError("Заполните поля");
         }
@@ -214,7 +216,7 @@ export default function LoginPage() {
                     </div>
                     <Input
                         required
-                        name="Логин"
+                        name="Почта"
                         type="text"
                         placeholder="Введите ваш e-mail"
                         onChange={enteredLoginHandler}
