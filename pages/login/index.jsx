@@ -81,9 +81,9 @@ export default function LoginPage() {
             logger.info("start getting user data");
             setLoading(true);
 
-            authCtx.onLogin(enteredLogin, enteredPassword);
-            setError(authCtx.error);
-            console.log(authCtx.error);
+            const answ = await authCtx.onLogin(enteredLogin, enteredPassword);
+
+            setError(await answ);
         } else {
             setError("Заполните поля");
         }
