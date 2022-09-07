@@ -4,7 +4,10 @@
     padding: 20px;
     padding-top: 34px;
     width: 100%;
-    display: flex;
+    height: calc(100vh - 120px);
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -87,8 +90,6 @@
     padding: 10px 13px;
 }
 
-
-
 .response {
     width: 100%;
     transition: 0.2s;
@@ -139,4 +140,32 @@
     background-color: $button-bg-hover;
     color: #fff;
     cursor: auto;
+}
+
+@media (min-width: 1493px) {
+    .vacancies {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .vacancies {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (max-width: 956px) {
+    .vacancies {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 645px) {
+    .vacancies {
+        display: grid;
+        grid-template-columns: auto;
+    }
 }
