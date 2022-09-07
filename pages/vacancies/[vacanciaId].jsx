@@ -145,7 +145,7 @@ export default function NewsItemPage({
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        Откликнулись:
+                        Откликнулось:
                         <span>{Number(volCount)}</span>
                     </p>
                 </ul>

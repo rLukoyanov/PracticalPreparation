@@ -19,7 +19,8 @@ export default function ProfilePage() {
         surname: "userSurname",
     });
 
-    const { userId, firstName, lastName, avatar, email } = authCtx.userData;
+    const { userId, firstName, lastName, email, birthday, edu, phone, avatar } =
+        authCtx.userData;
 
     const [isOpen, setIsOpen] = useState(false);
     const [tabs, setTabs] = useState("exp");
@@ -48,18 +49,16 @@ export default function ProfilePage() {
 
                     <ContactsBlock
                         email={email}
-                        phone={userData.phone}
+                        phone={phone}
                         telegram={userData.telegram}
-                        address={userData.address}
                     />
                 </div>
                 <div className={styles.rightBlock}>
                     <ChangeDataBlock
-                        name={userData.name}
-                        surname={userData.surname}
+                        name={firstName}
+                        lastName={lastName}
                         email={email}
-                        date={userData.date}
-                        gender={userData.gender}
+                        birthday={birthday}
                     />
                 </div>
             </div>

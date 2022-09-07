@@ -180,7 +180,7 @@ export default function LoginPage() {
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
-                            <span>
+                            <span className={styles.check}>
                                 Даю согласие на обработку персональных данных
                             </span>
                         </label>
@@ -188,7 +188,7 @@ export default function LoginPage() {
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
-                            <span>
+                            <span className={styles.check}>
                                 Принимаю Пользовательское соглашение и Политику
                                 конфиденциальности
                             </span>
@@ -237,8 +237,8 @@ export default function LoginPage() {
                     <p className={styles.error}>{error}</p>
                     <div className={styles.checkboxPassword}>
                         <label>
-                            <input type="checkbox" />
-                            Запомнить меня
+                            <Checkbox />
+                            <span className={styles.remember}>Запомнить меня</span>
                         </label>
                         <a href="/profile">Забыли пароль?</a>
                     </div>
