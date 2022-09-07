@@ -5,7 +5,6 @@ import axios from "axios";
 const AuthContext = React.createContext({
     isLoggedIn: false,
     userData: {},
-    error: "",
     onLogout: () => {},
     onLogin: () => {},
 });
@@ -13,7 +12,6 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState({});
-    const [error, setError] = useState(null);
 
     const logoutHandler = () => {
         setIsLoggedIn(false);
@@ -26,8 +24,8 @@ export const AuthContextProvider = ({ children }) => {
                 enteredPassword,
             });
 
-            userId = userId.data.userId;
-            setError(userId);
+            userId = await userId.data.userId;
+
             if (typeof userId === "number") {
                 const userData = await axios.post("/api/user/", {
                     userId,
@@ -37,22 +35,20 @@ export const AuthContextProvider = ({ children }) => {
                     userId: userId,
                     firstName: userData.data.first_name,
                     lastName: userData.data.last_name,
-                    avatar: "",
                     email: userData.data.user_profile.user_email,
                     avatar: "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album",
                 };
 
                 setUserData({ ...filteredUserData });
                 setIsLoggedIn(true);
-            } else {
-                setError(userId);
             }
+
+            return await userId;
         } catch {
             const filteredUserData = {
                 userId: 0,
                 firstName: "userName",
                 lastName: "userSurname",
-                avatar: "",
                 email: "test@test.com",
                 avatar: "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album",
             };
@@ -66,7 +62,6 @@ export const AuthContextProvider = ({ children }) => {
             value={{
                 isLoggedIn,
                 userData,
-                error,
                 onLogout: logoutHandler,
                 onLogin: loginHandler,
             }}
