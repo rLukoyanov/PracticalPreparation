@@ -17,11 +17,6 @@ export default function UserAchieves() {
         <div className={styles.work}>
             <div className={styles.exp}>
                 <div className={styles.content}>
-                    <img
-                        width={600}
-                        height={600}
-                        src="../../public/images/diplom.png"
-                    />
                     <pre className={styles.text}>
                         Диплом призера муниципального этапа всероссийской
                         олимпида школьников по оществознанию среди 8 классов
