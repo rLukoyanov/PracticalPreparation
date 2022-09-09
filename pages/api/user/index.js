@@ -8,6 +8,5 @@ export default async (req, res) => {
         `${process.env.API_URL}/users/current?user_id=${req.body.userId}`
     );
 
-    console.log(req.body.userId);
     res.json(data);
 };
