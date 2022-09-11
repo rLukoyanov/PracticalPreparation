@@ -82,7 +82,6 @@ export default function LoginPage() {
             setLoading(true);
 
             const answ = await authCtx.onLogin(enteredLogin, enteredPassword);
-
             setError(await answ);
         } else {
             setError("Заполните поля");
@@ -238,7 +237,9 @@ export default function LoginPage() {
                     <div className={styles.checkboxPassword}>
                         <label>
                             <Checkbox />
-                            <span className={styles.remember}>Запомнить меня</span>
+                            <span className={styles.remember}>
+                                Запомнить меня
+                            </span>
                         </label>
                         <a href="/profile">Забыли пароль?</a>
                     </div>

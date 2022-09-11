@@ -72,7 +72,7 @@ export default function Vacancies() {
     ];
     return (
         <div className={styles.vacancies}>
-            {vacanciesArray.map((vacanciaItem) => (
+            {vacanciesArray.map((vacanciaItem, ) => (
                 <Vacancia
                     text={vacanciaItem.text}
                     title={vacanciaItem.title}
