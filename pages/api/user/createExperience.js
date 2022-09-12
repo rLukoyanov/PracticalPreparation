@@ -9,9 +9,9 @@ export default async (req, res) => {
         `${process.env.API_URL}/users/exp/create`,
         querystring.stringify({
             user_id: req.body.userId,
-            position: req.body.expPosition,
-            description: req.body.description,
-            company: req.body.company
+            position: req.body.title,
+            description: req.body.details,
+            company: req.body.place,
         })
     );
 

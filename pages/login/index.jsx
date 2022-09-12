@@ -48,6 +48,7 @@ export default function LoginPage() {
 
     const toggleReg = () => {
         setReg(!reg);
+        setLoading(false);
     };
 
     const enteredLoginHandler = (event) => {
@@ -122,7 +123,7 @@ export default function LoginPage() {
                 setIsReg(true);
             }
         } catch (err) {
-            console.log(err);
+            setError(err);
         }
         setLoading(true);
     };
@@ -203,7 +204,13 @@ export default function LoginPage() {
                         className={styles.input}
                     />
                     {reg ?? <p className={styles.error}>{error}</p>}
-                    {setIsReg ?? <p>Вы успешно зарегистрировались</p>}
+                    {isReg ? (
+                        <p style={{ color: "green" }}>
+                            Вы успешно зарегистрировались
+                        </p>
+                    ) : (
+                        <></>
+                    )}
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />

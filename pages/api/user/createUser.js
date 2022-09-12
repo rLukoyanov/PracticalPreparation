@@ -17,6 +17,6 @@ export default async (req, res) => {
             phone_number: req.body.enteredNumber,
         })
     );
-
+    console.log(data);
     res.json(data);
 };
