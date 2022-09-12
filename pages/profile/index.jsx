@@ -24,6 +24,26 @@ export default function ProfilePage() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [tabs, setTabs] = useState("exp");
+
+    const [experience, setExperience] = useState([]);
+
+    const [counter, setCounter] = useState(0);
+
+    const refreshWorkExp = () => {
+        setCounter(counter + 1);
+    };
+
+    useEffect(() => {
+        const getWorkExp = async () => {
+            const { data } = await axios.post("api/user/expirience", {
+                userId: userId,
+            });
+
+            setExperience(await data);
+        };
+        getWorkExp();
+    }, [counter]);
+
     const onClose = () => {
         setIsOpen(false);
     };
@@ -108,9 +128,20 @@ export default function ProfilePage() {
                         </svg>
                     </button>
                 </div>
-                {tabs === "exp" ? <WorkExperience /> : <UserAchieves />}
+                {tabs === "exp" ? (
+                    <WorkExperience experience={experience} />
+                ) : (
+                    <UserAchieves />
+                )}
 
-                {isOpen ? <AddWorkExp onClose={onClose} /> : <></>}
+                {isOpen ? (
+                    <AddWorkExp
+                        refreshWorkExp={refreshWorkExp}
+                        onClose={onClose}
+                    />
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     );
