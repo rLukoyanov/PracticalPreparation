@@ -23,6 +23,11 @@ export default function WorkExperience() {
     }, []);
     return (
         <div className={styles.work}>
+            {expirience.length === 0 ? (
+                <span style={{ marginLeft: "30px" }}>Подождите...</span>
+            ) : (
+                <></>
+            )}
             {expirience.map((item) => (
                 <div className={styles.exp}>
                     <div className={styles.content}>

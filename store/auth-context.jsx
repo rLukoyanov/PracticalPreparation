@@ -44,9 +44,9 @@ export const AuthContextProvider = ({ children }) => {
                             ? userData.data.last_name
                             : "Фамилия",
                     email:
-                        userData.data.user_email &&
-                        userData.data.user_profile.user_email.length > 0
-                            ? userData.data.user_profile.user_email
+                        userData.data.nickname &&
+                        userData.data.nickname.length > 0
+                            ? userData.data.nickname
                             : "Почта",
                     birthday:
                         userData.data.birthday &&
