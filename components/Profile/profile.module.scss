@@ -378,8 +378,11 @@
     position: relative;
 
     .exp {
-        padding: 51px;
-        padding-top: 0;
+        padding: 0 51px 0 51px;
+        
+        &:last-child {
+            padding-bottom: 30px;
+        }
         .content {
             display: flex;
             flex-direction: column;
