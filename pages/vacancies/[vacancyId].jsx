@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -10,12 +10,12 @@ import styles from "../../components/News/Event.module.scss";
 import protocol from "../../protocol";
 
 export default function NewsItemPage({
-    timeTable = "",
     volCount = 0,
     place = " ",
     tgId = "",
     err = "",
     name = "",
+    vacancyId = 1,
 }) {
     const router = useRouter();
     const [alert, setAlert] = useState(false);
@@ -23,6 +23,26 @@ export default function NewsItemPage({
     const [isActive, setIsActive] = useState(false);
     const authCtx = useContext(AuthContext);
     const userId = authCtx.userData.id;
+
+    const [vacancy, setVacancy] = useState({
+        address: "ул. Юности, 14-б",
+        contacts: "",
+        description: "",
+        title: "",
+        salary: "",
+    });
+
+    useEffect(() => {
+        const fetchVacancy = async () => {
+            const { data } = await axios.post("/api/vacancy/getVacancyById", {
+                vacancyId,
+            });
+            console.log(data);
+            setVacancy(data);
+        };
+
+        fetchVacancy();
+    }, []);
 
     const closeAlert = () => {
         setAlert(false);
@@ -49,23 +69,15 @@ export default function NewsItemPage({
     return (
         <div className={styles.event}>
             <div className={styles.leftBlock}>
-                <h2>Старший курьер</h2>
+                <h2>{vacancy.title}</h2>
                 <div className={styles.card}>
-                    Требуемый опыт работы: не требуется <br />
+                    Требуемый опыт работы: {vacancy.expTime} <br />
                     Полная занятость, полный день <br />
                     <br />
-                    Мэйджор Экспресс - компания, специализирующаяся на
-                    предоставлении услуг по экспресс-доставке корреспонденции и
-                    грузов в любую точку мира. Высокий уровень оказываемых
-                    услуг, кратчайшие сроки, гибкая ценовая политика,
-                    максимальная открытость и клиентоориентированность позволяют
-                    нам с уверенностью говорить о лучшем на сегодняшний день в
-                    России соотношении цена/скорость/качество оказываемых услуг
-                    и завоевывать доверие крупных российских и международных
-                    компаний.
+                    {vacancy.description}
                     <h2>Обязанности:</h2>
                     <ul>
-                        <li> Контроль работы курьеров</li>
+                        <li>Контроль работы курьеров</li>
                         <li>Прием и отправка грузов на складе</li>
                         <li>Замена курьеров в отпуске по маршруту</li>
                         <li>
@@ -122,7 +134,7 @@ export default function NewsItemPage({
                                 fill="#6495ED"
                             />
                         </svg>
-                        ул. Юности, 14-б
+                        {vacancy.address}
                         {place.substring(0, 16)}
                         {PLACE.length >= 16 ? "..." : ""}
                     </p>
@@ -145,8 +157,7 @@ export default function NewsItemPage({
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        Откликнулось:
-                        <span>{Number(volCount)}</span>
+                        <span>{Number(vacancy.contacts)}</span>
                     </p>
                 </ul>
                 <Button
@@ -191,12 +202,12 @@ export default function NewsItemPage({
 }
 
 export const getServerSideProps = async (context) => {
-    const { vacanciaId } = context.params;
+    const { vacancyId } = context.params;
     const { req } = context;
     try {
         return {
             props: {
-                vacanciaId,
+                vacancyId: vacancyId,
                 hostName: req.headers.host,
             },
         };
