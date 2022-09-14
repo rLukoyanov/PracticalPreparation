@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import styles from "../../components/News/News.module.scss";
-import Vacancia from "../../components/vacancies/Vacancia";
+import Vacancy from "../../components/vacancies/Vacancia";
 
 import protocol from "../../protocol";
+import axios from "axios";
+import AuthContext from "../../store/auth-context";
 
 export default function NewsPage() {
-    const vacanciesArray = [
-        {
-            text: 'В фитнес бар "Мандарин" требуется бармен. Нижнекамск, пр. Шинников, 37 Orange Fitness. Тел. +7 (913) 772-16-07 Артём',
-            title: "Бармен",
-            advantages: ["Без опыта", "Полная занятость", "Сменный график"],
-            price: "от 22 000 руб",
-            image: "https://sun9-8.userapi.com/impg/sTJ5sw3Wle8z4RNuR7hhwjf86lCWr27L8BRKIQ/0l02DRLY_Rs.jpg?size=1280x881&quality=95&sign=93d17be63082dcf011d1d877ebe9f9ff&type=album",
-        },
-    ];
+    const [responses, setResponses] = useState([]);
+    const AuthCtx = useContext(AuthContext);
+    const { userId } = AuthCtx.userData;
+
+    useEffect(() => {
+        const fetchResponse = async () => {
+            const { data } = await axios.post("/api/vacancy/response", {
+                userId,
+            });
+            console.log(data);
+            setResponses(data);
+        };
+        fetchResponse();
+    }, []);
+
     return (
         <div className={styles.news}>
-            {vacanciesArray.map((vacanciaItem) => (
-                <Vacancia
+            {responses.length === 0 ? "Подождите..." : <></>}
+            {responses.map((response) => (
+                <Vacancy
                     isResponse
-                    text={vacanciaItem.text}
-                    title={vacanciaItem.title}
-                    advantages={vacanciaItem.advantages}
-                    price={vacanciaItem.price}
-                    image={vacanciaItem.image}
+                    text={response.vacancy_info.description}
+                    title={response.vacancy_name}
+                    advantages={[]}
+                    price={response.vacancy_info.salary}
                 />
             ))}
         </div>
