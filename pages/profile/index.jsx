@@ -19,10 +19,31 @@ export default function ProfilePage() {
         surname: "userSurname",
     });
 
-    const { userId, firstName, lastName, avatar, email } = authCtx.userData;
+    const { userId, firstName, lastName, email, birthday, edu, phone, avatar } =
+        authCtx.userData;
 
     const [isOpen, setIsOpen] = useState(false);
     const [tabs, setTabs] = useState("exp");
+
+    const [experience, setExperience] = useState([]);
+
+    const [counter, setCounter] = useState(0);
+
+    const refreshWorkExp = () => {
+        setCounter(counter + 1);
+    };
+
+    useEffect(() => {
+        const getWorkExp = async () => {
+            const { data } = await axios.post("api/user/expirience", {
+                userId: userId,
+            });
+
+            setExperience(await data);
+        };
+        getWorkExp();
+    }, [counter]);
+
     const onClose = () => {
         setIsOpen(false);
     };
@@ -48,18 +69,16 @@ export default function ProfilePage() {
 
                     <ContactsBlock
                         email={email}
-                        phone={userData.phone}
+                        phone={phone}
                         telegram={userData.telegram}
-                        address={userData.address}
                     />
                 </div>
                 <div className={styles.rightBlock}>
                     <ChangeDataBlock
-                        name={userData.name}
-                        surname={userData.surname}
+                        name={firstName}
+                        lastName={lastName}
                         email={email}
-                        date={userData.date}
-                        gender={userData.gender}
+                        birthday={birthday}
                     />
                 </div>
             </div>
@@ -109,9 +128,20 @@ export default function ProfilePage() {
                         </svg>
                     </button>
                 </div>
-                {tabs === "exp" ? <WorkExperience /> : <UserAchieves />}
+                {tabs === "exp" ? (
+                    <WorkExperience experience={experience} />
+                ) : (
+                    <UserAchieves />
+                )}
 
-                {isOpen ? <AddWorkExp onClose={onClose} /> : <></>}
+                {isOpen ? (
+                    <AddWorkExp
+                        refreshWorkExp={refreshWorkExp}
+                        onClose={onClose}
+                    />
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     );

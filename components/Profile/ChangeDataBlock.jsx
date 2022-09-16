@@ -9,19 +9,27 @@ import styles from "./profile.module.scss";
 
 export default function ChangeDataBlock({
     name = "userName",
-    surname = "userSurname",
+    lastName = "userSurname",
     email = "test@mail.ru",
-    date = "111111111",
+    birthday = "111111111",
     ed = "Среднее образование",
     lang = ["Родной язык(родной)"],
 }) {
-    const [year] = useState(date[0] + date[1] + date[2] + date[3]);
+    const [year] = useState(
+        birthday[6] + birthday[7] + birthday[8] + birthday[9]
+    );
+
+    console.log(birthday[3] + birthday[4]);
     const [month, setMonth] = useState(
         getMonth(
-            new Date(year, Number(date[4] + date[5] - 1), date[6] + date[7])
+            new Date(
+                year,
+                Number(birthday[3] + birthday[4] - 1),
+                birthday[0] + birthday[1]
+            )
         )
     );
-    const [day] = useState(date[6] + date[7]);
+    const [day] = useState(birthday[0] + birthday[1]);
 
     let days = [];
 
@@ -80,7 +88,7 @@ export default function ChangeDataBlock({
             </label>
             <label>
                 <span>Фамилия</span>
-                <input value={surname} />
+                <input value={lastName} />
             </label>
             <label>
                 <span>E-mail</span>
@@ -124,7 +132,9 @@ export default function ChangeDataBlock({
                     ))}
                 </div>
             </label>
-            <Button className={styles.saveBtn} disabled>Сохранить</Button>
+            <Button className={styles.saveBtn} disabled>
+                Сохранить
+            </Button>
         </div>
     );
 }

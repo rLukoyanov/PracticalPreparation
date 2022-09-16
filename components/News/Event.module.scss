@@ -6,9 +6,9 @@
     padding: 45px;
     width: 100%;
     background-color: #e5e5e5;
-    overflow-y: scroll;
     word-break: break-all;
     padding-bottom: 20px;
+    overflow-y: scroll;
 }
 
 .leftBlock {
@@ -73,8 +73,6 @@
     padding: 35px;
     background: #ffffff;
     border-radius: 8px;
-    overflow-y: scroll;
-    height: calc(100vh - 185px);
 
     h2 {
         margin-bottom: 25px;
@@ -126,6 +124,14 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
+
+        p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     }
 
     svg {
@@ -146,7 +152,9 @@
 
 .event_name {
     display: none;
+
 }
+
 
 .buttons {
     display: flex;
@@ -165,6 +173,7 @@
         flex-direction: column-reverse;
         padding: 0;
         background-color: #fff;
+
         .card {
             background-color: #fff;
             width: 100%;
@@ -198,6 +207,7 @@
             display: block;
             height: auto;
             padding-bottom: 15px;
+
             ul {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -218,6 +228,14 @@
                 font-size: 30px;
                 line-height: 35px;
                 margin-bottom: 16px;
+
+                ul {
+                    p {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
             }
 
             button {

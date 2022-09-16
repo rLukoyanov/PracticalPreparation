@@ -97,13 +97,7 @@ export default function Vacancia({
                             className={`${styles.button} ${styles.answ}`}
                             type="button"
                         >
-                            Откликнуться
-                        </Button>
-                        <Button
-                            className={`${styles.button} ${styles.responded}`}
-                            type="button"
-                        >
-                            Откликнулось: 0
+                            Подробнее
                         </Button>
                     </>
                 )}

@@ -7,6 +7,7 @@ import Button from "../../components/Common/Button/Button";
 import AuthContext from "../../store/auth-context";
 
 import styles from "../../components/Login/Login.module.scss";
+import axios from "axios";
 
 export default function LoginPage() {
     const logger = pino({
@@ -14,6 +15,7 @@ export default function LoginPage() {
     });
 
     const [reg, setReg] = useState(false);
+    const [isReg, setIsReg] = useState(false);
 
     const [enteredLogin, setEnteredLogin] = useState("");
     const [enteredPassword, setEnteredPassword] = useState("");
@@ -33,10 +35,20 @@ export default function LoginPage() {
 
     useEffect(() => {
         setLoading(false);
-    }, [enteredLogin, enteredPassword]);
+    }, [
+        enteredLogin,
+        enteredPassword,
+        enteredEducation,
+        enteredEmail,
+        enteredNumber,
+        enteredBirthday,
+        enteredName,
+        enteredSurname,
+    ]);
 
     const toggleReg = () => {
         setReg(!reg);
+        setLoading(false);
     };
 
     const enteredLoginHandler = (event) => {
@@ -81,24 +93,39 @@ export default function LoginPage() {
             logger.info("start getting user data");
             setLoading(true);
 
-            authCtx.onLogin(enteredLogin, enteredPassword);
-            setError(authCtx.error);
-            console.log(authCtx.error);
+            const answ = await authCtx.onLogin(enteredLogin, enteredPassword);
+            setError(await answ);
         } else {
             setError("Заполните поля");
         }
     };
 
-    const onRegister = () => {
-        console.group("mainUserData");
-        console.log("name:", enteredName);
-        console.log("surname:", enteredSurname);
-        console.log("password:", enteredPassword);
-        console.group("secondaryUserData");
-        console.log("birthday:", enteredBirthday);
-        console.log("phoneNumber:", enteredNumber);
-        console.log("email:", enteredEmail);
-        console.log("education:", enteredEducation);
+    const onRegister = async () => {
+        const year =
+            enteredBirthday[0] +
+            enteredBirthday[1] +
+            enteredBirthday[2] +
+            enteredBirthday[3];
+        const mounth = enteredBirthday[5] + enteredBirthday[6];
+        const day = enteredBirthday[8] + enteredBirthday[9];
+        const refactoringDate = `${day}/${mounth}/${year}`;
+        try {
+            const { data } = await axios.post("/api/user/createUser", {
+                enteredName,
+                enteredSurname,
+                enteredPassword,
+                enteredNumber,
+                enteredBirthday: refactoringDate,
+                enteredEmail,
+                enteredEducation,
+            });
+            if (data === "Учётная запись была создана") {
+                setIsReg(true);
+            }
+        } catch (err) {
+            setError(err);
+        }
+        setLoading(true);
     };
 
     return (
@@ -177,10 +204,17 @@ export default function LoginPage() {
                         className={styles.input}
                     />
                     {reg ?? <p className={styles.error}>{error}</p>}
+                    {isReg ? (
+                        <p style={{ color: "green" }}>
+                            Вы успешно зарегистрировались
+                        </p>
+                    ) : (
+                        <></>
+                    )}
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
-                            <span>
+                            <span className={styles.check}>
                                 Даю согласие на обработку персональных данных
                             </span>
                         </label>
@@ -188,7 +222,7 @@ export default function LoginPage() {
                     <div className={styles.checkboxPassword}>
                         <label className={styles.checkText}>
                             <Checkbox />
-                            <span>
+                            <span className={styles.check}>
                                 Принимаю Пользовательское соглашение и Политику
                                 конфиденциальности
                             </span>
@@ -237,8 +271,10 @@ export default function LoginPage() {
                     <p className={styles.error}>{error}</p>
                     <div className={styles.checkboxPassword}>
                         <label>
-                            <input type="checkbox" />
-                            Запомнить меня
+                            <Checkbox />
+                            <span className={styles.remember}>
+                                Запомнить меня
+                            </span>
                         </label>
                         <a href="/profile">Забыли пароль?</a>
                     </div>

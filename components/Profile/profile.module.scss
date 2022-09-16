@@ -246,6 +246,17 @@
     max-height: 300px;
     margin-top: 21px;
     width: 100%;
+
+    .button {
+        border: none;
+        background-color: transparent;
+        height: 115px !important;
+        width: 115px !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
 }
 
 .inputBlock {
@@ -367,8 +378,11 @@
     position: relative;
 
     .exp {
-        padding: 51px;
-        padding-top: 0;
+        padding: 0 51px 0 51px;
+        
+        &:last-child {
+            padding-bottom: 30px;
+        }
         .content {
             display: flex;
             flex-direction: column;
@@ -411,6 +425,10 @@
                 }
             }
         }
+    }
+    
+    .text {
+        margin-left: 27px;
     }
 }
 
